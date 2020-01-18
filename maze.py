@@ -57,19 +57,23 @@ class Maze:
                             (rows_in_maze-1)/2+.5)
 
     def draw_maze(self):
-        self.t.speed(5000)
+        self.t.speed(0)
+        self.wn.tracer(0)
         for y in range(self.rows_in_maze):
             for x in range(self.columns_in_maze):
                 if self.maze_list[y][x] == OBSTACLE:
                     self.draw_centered_box(x+self.x_translate,
-                        -y+self.y_translate, 'orange') 
-        self.t.color('black')
-        self.t.fillcolor('blue')
+                        -y+self.y_translate, 'pink') 
+        self.t.color('orange')
+        self.t.fillcolor('green')
+        self.wn.update()
+
+        self.wn.tracer(1)
 
     def draw_centered_box(self,x,y,color):
         self.t.up()
         self.t.goto(x-.5,y-.5)
-        self.t.color('black',color)
+        self.t.color('red',color)
         self.t.setheading(90)
         self.t.down()
         self.t.begin_fill()
